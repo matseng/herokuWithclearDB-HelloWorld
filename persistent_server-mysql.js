@@ -41,11 +41,7 @@ handleDisconnect();
 var db = {
   selectAllFromUrls: "SELECT * FROM urls",
   selectAllFromUrl_to_url: "SELECT * FROM url_to_url",
-  testJoinJoin3: //YES, WORKING!!! Aliases are required in the SELECT line so row objects don't have duplicate properties
-    "SELECT u1.title AS title1, u2.title AS title2  \
-    FROM urls as u1  \
-    INNER JOIN url_to_url ON u1.url_id = url_to_url.url_id  \
-    INNER JOIN urls as u2 ON url_to_url.child_id = u2.url_id"  //? is a variable that's is specified as the 2cd argument of the query
+  testJoinJoin3: "SELECT u1.title AS title1, u2.title AS title2 FROM urls as u1 INNER JOIN url_to_url ON u1.url_id = url_to_url.url_id INNER JOIN urls as u2 ON url_to_url.child_id = u2.url_id"
 }
 
 app.get('/', function(request, response) {
