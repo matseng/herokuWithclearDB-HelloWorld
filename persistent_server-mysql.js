@@ -39,7 +39,7 @@ function handleDisconnect() {
 handleDisconnect();
 
 var db = {
-  selectAll: "SELECT * FROM urls"
+  selectAll: "SELECT * FROM urls",
   testJoinJoin3: //YES, WORKING!!! Aliases are required in the SELECT line so row objects don't have duplicate properties
     "SELECT u1.title AS title1, u2.title AS title2  \
     FROM urls as u1  \
