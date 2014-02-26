@@ -1,0 +1,30 @@
+{
+  "name": "heroku-helloWorld",
+  "version": "0.0.0",
+  "description": "Example Hello World app",
+  "main": "web.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/matseng/WikiViz/tree/featureBranch5/map-server/heroku-helloWorld"
+  },
+  "keywords": [
+    "example",
+    "heroku"
+  ],
+  "author": "Michael Tseng",
+  "license": "(BSD-2-Clause) MIT",
+  "bugs": {
+    "url": "https://github.com/matseng/WikiViz/issues"
+  },
+  "homepage": "https://github.com/matseng/WikiViz",
+  "engines": {
+    "node": "0.10.24"
+  },
+  "dependencies": {
+    "logfmt": "~0.21.0",
+    "express": "~3.4.8"
+  }
+}
