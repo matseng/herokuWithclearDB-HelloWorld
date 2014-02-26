@@ -41,11 +41,12 @@ handleDisconnect();
 var db = {
   selectAllFromUrls: "SELECT * FROM urls",
   selectAllFromUrl_to_url: "SELECT * FROM url_to_url",
+  find_children_by_id: "SELECT child_id FROM urls JOIN url_to_url USING (url_id) WHERE url_id = 1",
   testJoinJoin3: "SELECT u1.title AS title1, u2.title AS title2 FROM urls as u1 INNER JOIN url_to_url ON u1.url_id = url_to_url.url_id INNER JOIN urls as u2 ON url_to_url.child_id = u2.url_id"
 }
 
 app.get('/', function(request, response) {
-    connection.query(db.testJoinJoin3, function(err, rows, fields) {
+    connection.query(db.find_children_by_id, function(err, rows, fields) {
         if (err) {
             console.log('error: ', err);
             throw err;
