@@ -45,11 +45,11 @@ var db = {
     "SELECT u1.title AS title1, u2.title AS title2  \
     FROM urls as u1  \
     INNER JOIN url_to_url ON u1.url_id = url_to_url.url_id  \
-    INNER JOIN urls as u2 ON url_to_url.child_id = u2.url_id;"  //? is a variable that's is specified as the 2cd argument of the query
+    INNER JOIN urls as u2 ON url_to_url.child_id = u2.url_id"  //? is a variable that's is specified as the 2cd argument of the query
 }
 
 app.get('/', function(request, response) {
-    connection.query(db.selectAllFromUrl_to_url, function(err, rows, fields) {
+    connection.query(db.testJoinJoin3, function(err, rows, fields) {
         if (err) {
             console.log('error: ', err);
             throw err;
