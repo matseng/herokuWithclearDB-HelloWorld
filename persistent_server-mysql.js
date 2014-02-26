@@ -48,7 +48,7 @@ var db = {
 }
 
 app.get('/', function(request, response) {
-    connection.query(db.selectAll, function(err, rows, fields) {
+    connection.query(db.testJoinJoin3, function(err, rows, fields) {
         if (err) {
             console.log('error: ', err);
             throw err;
