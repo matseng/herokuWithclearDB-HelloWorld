@@ -39,7 +39,8 @@ function handleDisconnect() {
 handleDisconnect();
 
 var db = {
-  selectAll: "SELECT * FROM urls",
+  selectAllFromUrls: "SELECT * FROM urls",
+  selectAllFromUrl_to_url: "SELECT * FROM url_to_url",
   testJoinJoin3: //YES, WORKING!!! Aliases are required in the SELECT line so row objects don't have duplicate properties
     "SELECT u1.title AS title1, u2.title AS title2  \
     FROM urls as u1  \
@@ -48,7 +49,7 @@ var db = {
 }
 
 app.get('/', function(request, response) {
-    connection.query(db.testJoinJoin3, function(err, rows, fields) {
+    connection.query(db.selectAllFromUrl_to_url, function(err, rows, fields) {
         if (err) {
             console.log('error: ', err);
             throw err;
