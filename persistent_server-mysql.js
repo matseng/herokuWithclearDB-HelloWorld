@@ -15,25 +15,23 @@ var db_config = {
 var connection;
 
 function handleDisconnect() {
-    console.log('1. connecting to db:');
-    connection = mysql.createConnection(db_config); // Recreate the connection, since
-                          // the old one cannot be reused.
-
-    connection.connect(function(err) {                // The server is either down
-        if (err) {                                     // or restarting (takes a while sometimes).
-            console.log('2. error when connecting to db:', err);
-            setTimeout(handleDisconnect, 1000); // We introduce a delay before attempting to reconnect,
-        }                                       // to avoid a hot loop, and to allow our node script to
-    });                                       // process asynchronous requests in the meantime.
-                          // If you're also serving http, display a 503 error.
-    connection.on('error', function(err) {
-        console.log('3. db error', err);
-        if (err.code === 'PROTOCOL_CONNECTION_LOST') {  // Connection to the MySQL server is usually
-            handleDisconnect();                       // lost due to either server restart, or a
-        } else {                                        // connnection idle timeout (the wait_timeout
-            throw err;                                  // server variable configures this)
-        }
-    });
+  console.log('1. connecting to db:');
+  connection = mysql.createConnection(db_config); // Recreate the connection, since the old one cannot be reused.
+  connection.connect(function(err) {  // The server is either down
+    if (err) {  // or restarting (takes a while sometimes).
+      console.log('2. error when connecting to db:', err);
+      setTimeout(handleDisconnect, 1000); // We introduce a delay before attempting to reconnect,
+    }  // to avoid a hot loop, and to allow our node script to
+  });  // process asynchronous requests in the meantime.
+    // If you're also serving http, display a 503 error.
+  connection.on('error', function(err) {
+    console.log('3. db error', err);
+    if (err.code === 'PROTOCOL_CONNECTION_LOST') {  // Connection to the MySQL server is usually
+      handleDisconnect();  // lost due to either server restart, or a
+    } else {  // connnection idle timeout (the wait_timeout
+      throw err; // server variable configures this)
+    }
+  });
 }
 
 handleDisconnect();
@@ -43,6 +41,7 @@ var db = {
   selectAllFromUrl_to_url: "SELECT * FROM url_to_url",
   find_children_by_id: "SELECT child_id FROM urls JOIN url_to_url USING (url_id) WHERE url_id = 1",
   testJoinJoin3: "SELECT u1.title AS title1, u2.title AS title2 FROM urls as u1 INNER JOIN url_to_url ON u1.url_id = url_to_url.url_id INNER JOIN urls as u2 ON url_to_url.child_id = u2.url_id"
+    //testJoinJoin3 not working
 }
 
 app.get('/', function(request, response) {

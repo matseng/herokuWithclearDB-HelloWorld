@@ -1,18 +1,17 @@
-$ heroku apps
 
-$ heroku open
+//calm-coast-9443
 
---app shrouded-refuge-6607
-
-CLEARDB_DATABASE_URL: mysql://b6c17621c70215:cb66271d@us-cdbr-east-05.cleardb.net/heroku_73f08b2ebf46a85?reconnect=true
+$ heroku config | grep CLEARDB_DATABASE_URL
+  //CLEARDB_DATABASE_URL: mysql://b6c17621c70215:cb66271d@us-cdbr-east-05.cleardb.net/heroku_73f08b2ebf46a85?reconnect=true
 
 $ heroku config:set DATABASE_URL='mysql://b6c17621c70215:cb66271d@us-cdbr-east-05.cleardb.net/heroku_73f08b2ebf46a85?reconnect=true'
 
-var db_config = {
-    host: 'us-cdbr-east-05.cleardb.net',
-    user: 'b6c17621c70215',
-    password: 'cb66271d',
-    database: 'heroku_73f08b2ebf46a85'
-};
+All the required info:
+  var db_config = {
+      host: 'us-cdbr-east-05.cleardb.net',
+      user: 'b6c17621c70215',
+      password: 'cb66271d',
+      database: 'heroku_73f08b2ebf46a85'
+  };
 
 mysql --host=us-cdbr-east-05.cleardb.net --user=b6c17621c70215 --password=cb66271d --reconnect heroku_73f08b2ebf46a85 < schema_urls.sql
